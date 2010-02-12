@@ -1,0 +1,20 @@
+Source: libmailtools-perl
+Priority: optional
+Section: mail
+Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
+Build-Depends: debhelper (>= 7)
+Build-Depends-Indep: perl (>= 5.6.0-17), libnet-perl, libtimedate-perl
+Standards-Version: 3.8.4
+Homepage: http://search.cpan.org/dist/MailTools/
+
+Package: libmailtools-perl
+Architecture: all
+Priority: optional
+Section: perl
+Depends: ${perl:Depends}, ${misc:Depends}, libnet-perl, libtimedate-perl
+Conflicts: mailtools (<= 1.15-1)
+Replaces: mailtools (<= 1.15-1)
+Provides: libmail-perl, mailtools
+Description: Manipulate email in perl programs
+ This is a set of perl modules which provide an easy interface to
+ manipulating email in an object-oriented fashion.

@@ -1,0 +1,3 @@
+version=2
+http://search.cpan.org/search?dist=MailTools /CPAN/authors/id/.*/MailTools-([0-9\.]*)\.tar\.gz	debian	uupdate -v
+

@@ -1,0 +1,62 @@
+#!/usr/bin/make -f
+
+# Make sure perl is defined 
+PERL ?= /usr/bin/perl
+
+# Set our build directory
+TMP := $(shell pwd)/debian/libmailtools-perl
+
+binary: binary-stamp
+binary-stamp: binary-indep-stamp binary-arch-stamp
+
+binary-arch: binary-arch-stamp
+binary-arch-stamp: build install
+
+build: build-stamp
+build-stamp: 
+	dh_testdir
+	$(PERL) Makefile.PL INSTALLDIRS=vendor
+	$(MAKE) CFLAGS="-O2 -Wall"
+	touch build-stamp
+
+binary-indep: binary-indep-stamp
+binary-indep-stamp: build install
+	dh_testdir
+	dh_testroot
+	dh_perl
+	(for i in Mail/*.pm; do echo Mail::`basename $$i .pm` ; pod2text $$i | perl -ne '$$/=""; s/^DESCRIPTION// && print'; done) >> debian/OVERVIEW
+	dh_installchangelogs ChangeLog
+	dh_installdocs
+	cd examples && \
+	${PERL} forwd_demo.PL; ${PERL} rplyto_demo.PL; ${PERL} send_demo.PL
+	mkdir ${TMP}/usr/share/doc/libmailtools-perl/demos
+	mv examples/forwd_demo examples/rplyto_demo examples/send_demo \
+	${TMP}/usr/share/doc/libmailtools-perl/demos
+	dh_fixperms
+	dh_compress
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+install: install-stamp
+install-stamp: build-stamp
+	
+	dh_testdir
+	dh_testroot
+	dh_clean
+	dh_installdirs
+
+	$(MAKE) install PREFIX=${TMP}/usr
+	rm -rf ${TMP}/usr/lib
+	touch install-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	[ ! -f Makefile ] || $(MAKE) realclean
+	dh_clean binary-stamp binary-arch-stamp binary-indep-stamp build-stamp config-stamp install-stamp
+	-rm -f examples/forwd_demo examples/rplyto_demo examples/send_demo
+	-rm -f debian/OVERVIEW
+
+.PHONY: binary binary-arch binary-indep clean config install
