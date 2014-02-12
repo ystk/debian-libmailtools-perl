@@ -1,3 +1,36 @@
+libmailtools-perl (2.09-1) unstable; urgency=low
+
+  * New upstream release
+  * Standards version is 3.9.3
+  * DH compatibility level is 9
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Sat, 16 Jun 2012 15:44:52 +1000
+
+libmailtools-perl (2.08-1) unstable; urgency=low
+
+  * New upstream
+    Fixes:
+    - respect errors on closing an Mail::Mailer::smtp/::smtps connection.
+      [Tristam Fenton-May]
+    - Mail::Internet should accept Net::SMTP::SSL as well.
+      rt.cpan.org#68590 [Jonathan Kamens]
+    Improvements:
+    - document that Mail::Mailer::smtps needs Authen::SASL
+  * Fix debian-rules-missing-recommended-target
+  * Fix out-of-date-standards-version
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Sat, 25 Jun 2011 19:22:57 +1000
+
+libmailtools-perl (2.07-1) unstable; urgency=low
+
+  * New upstream release
+  * Debian source format is 3.0 (quilt)
+  * Fix debian-rules-makemaker-prefix-is-deprecated
+  * Fix out-of-date-standards-version
+  * Fix copyright-refers-to-symlink-license
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Wed, 09 Mar 2011 22:51:32 +1100
+
 libmailtools-perl (2.06-1) unstable; urgency=low
 
   * New upstream release

@@ -15,15 +15,15 @@ Copyrights:
  Copyrights 1995-2007 by Mark Overmeer <perl@overmeer.net>
  Copyright (c) 2004 Bruno Negrao G Zica
 
-Licence:
+License:
  ``
    This library is free software; you can redistribute it and/or
    modify it under the same terms as Perl itself.
  ''
- Perl is dual-licenced under "Artistic" and "GPL".
- The text of the GPL licence is available from 
-  /usr/share/common-licenses/GPL
- The text of the Artistic licence is available from
+ Perl is dual-licensed under "Artistic" and "GPL".
+ The text of the GPL license is available from 
+  /usr/share/common-licenses/GPL-2
+ The text of the Artistic license is available from
   /usr/share/common-licenses/Artistic
- The text of the Perl licence is available from
+ The text of the Perl license is available from
   /usr/share/doc/perl/copyright

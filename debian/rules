@@ -12,6 +12,8 @@ binary-stamp: binary-indep-stamp binary-arch-stamp
 binary-arch: binary-arch-stamp
 binary-arch-stamp: build install
 
+build-arch: build
+build-indep: build
 build: build-stamp
 build-stamp: 
 	dh_testdir
@@ -37,7 +39,7 @@ binary-indep-stamp: build install
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
-	dh_builddeb
+	dh_builddeb -- -Zbzip2 -z9
 
 install: install-stamp
 install-stamp: build-stamp
@@ -47,7 +49,7 @@ install-stamp: build-stamp
 	dh_clean
 	dh_installdirs
 
-	$(MAKE) install PREFIX=${TMP}/usr
+	$(MAKE) install DESTDIR=${TMP}
 	rm -rf ${TMP}/usr/lib
 	touch install-stamp
 

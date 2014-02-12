@@ -2,9 +2,9 @@ Source: libmailtools-perl
 Priority: optional
 Section: mail
 Maintainer: Anibal Monsalve Salazar <anibal@debian.org>
-Build-Depends: debhelper (>= 7)
+Build-Depends: debhelper (>= 9)
 Build-Depends-Indep: perl (>= 5.6.0-17), libnet-perl, libtimedate-perl
-Standards-Version: 3.8.4
+Standards-Version: 3.9.3
 Homepage: http://search.cpan.org/dist/MailTools/
 
 Package: libmailtools-perl
