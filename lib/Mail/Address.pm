@@ -1,10 +1,10 @@
-# Copyrights 1995-2012 by Mark Overmeer <perl@overmeer.net>.
+# Copyrights 1995-2012 by [Mark Overmeer <perl@overmeer.net>].
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
 # Pod stripped from pm file by OODoc 2.00.
 package Mail::Address;
 use vars '$VERSION';
-$VERSION = '2.09';
+$VERSION = '2.12';
 
 use strict;
 
@@ -165,7 +165,7 @@ sub parse(@)
             $next = _find_next $idx+1, $tokens, $len;
         }
         elsif($depth)       { push @address, $_ }
-        elsif($next eq "<") { push @phrase,  $_ }
+        elsif($next eq '<') { push @phrase,  $_ }
         elsif( /^[.\@:;]$/ || !@address || $address[-1] =~ /^[.\@:;]$/ )
         {   push @address, $_ }
         else
@@ -266,7 +266,7 @@ sub host
 
 sub user
 {   my $addr = shift->address || '';
-    my $i    = index $addr, '@';
+    my $i    = rindex $addr, '@';
     $i >= 0 ? substr($addr,0,$i) : $addr;
 }
 

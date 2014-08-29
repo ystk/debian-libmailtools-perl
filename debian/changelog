@@ -1,3 +1,12 @@
+libmailtools-perl (2.12-1) unstable; urgency=low
+
+  * New upstream release 2.12
+  * Standards version is 3.9.4
+  * Depends on libnet-smtp-ssl-perl
+    Closes: #643841
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Sat, 25 May 2013 13:32:52 +1000
+
 libmailtools-perl (2.09-1) unstable; urgency=low
 
   * New upstream release
