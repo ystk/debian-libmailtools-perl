@@ -1,10 +1,10 @@
-# Copyrights 1995-2012 by Mark Overmeer <perl@overmeer.net>.
+# Copyrights 1995-2012 by [Mark Overmeer <perl@overmeer.net>].
 #  For other contributors see ChangeLog.
 # See the manual pages for details on the licensing terms.
 # Pod stripped from pm file by OODoc 2.00.
 package Mail::Header;
 use vars '$VERSION';
-$VERSION = '2.09';
+$VERSION = '2.12';
 
 
 use strict;
@@ -180,8 +180,15 @@ sub _fmt_line
               || $HDR_LENGTHS{$tag}
               || $self->fold_length;
 
-    _fold_line $line, $maxlen
-        if $modify && defined $maxlen;
+    if ($modify && defined $maxlen)
+    {   # folding will fix bad header continuations for us
+        _fold_line $line, $maxlen;
+    }
+    elsif($line =~ /\r?\n\S/)
+    {   return _error "Bad header continuation, skipping '$tag': ",
+                      "no space after newline in '$line'\n";
+    }
+
 
     $line =~ s/\n*$/\n/so;
     ($tag, $line);
