@@ -1,3 +1,16 @@
+libmailtools-perl (2.13-1) unstable; urgency=medium
+
+  * New upstream release 2.13.
+  * Standards version is 3.9.5
+  * Use default compression for binary packages.
+  * Don't split $name if it's the empty string.
+    Add 03-750357-unnamed-users.patch.
+    Patch by Guilhem Moulin <guilhem@guilhem.org>.
+    Closes: #750357.
+  * Refresh patches.
+
+ -- Anibal Monsalve Salazar <anibal@debian.org>  Tue, 09 Sep 2014 08:57:18 +0100
+
 libmailtools-perl (2.12-1) unstable; urgency=low
 
   * New upstream release 2.12

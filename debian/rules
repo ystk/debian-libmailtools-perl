@@ -39,7 +39,7 @@ binary-indep-stamp: build install
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
-	dh_builddeb -- -Zbzip2 -z9
+	dh_builddeb
 
 install: install-stamp
 install-stamp: build-stamp

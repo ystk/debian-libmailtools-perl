@@ -15,9 +15,11 @@ Sender: "Ari,,," <ari@example.com>
 The attached patch is a simple change to the code to make the name field
 *not* include these commas or other data in the field.
 
---- a/lib/Mail/Internet.pm	2010-01-26 20:01:43.000000000 +1100
-+++ b/lib/Mail/Internet.pm	2010-02-13 09:59:12.000000000 +1100
-@@ -526,6 +526,12 @@ sub cleaned_header_dup()
+Index: libmailtools-perl-2.13/lib/Mail/Internet.pm
+===================================================================
+--- libmailtools-perl-2.13.orig/lib/Mail/Internet.pm
++++ libmailtools-perl-2.13/lib/Mail/Internet.pm
+@@ -530,6 +530,12 @@ sub cleaned_header_dup()
      my $name = eval {local $SIG{__DIE__}; (getpwuid($>))[6]} || $ENV{NAME} ||"";
  
      while($name =~ s/\([^\(\)]*\)//) { 1; }

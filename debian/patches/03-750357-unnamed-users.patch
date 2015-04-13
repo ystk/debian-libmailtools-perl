@@ -1,0 +1,21 @@
+From: Guilhem Moulin <guilhem@guilhem.org>
+Subject: Re: Bug#750357: caff: Perl warning when sending mail
+Date: Fri, 6 Jun 2014 22:16:13 +0200
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=750357
+
+(split /,/, $name)[0] is undefined when $name is the empty string.
+
+Index: libmailtools-perl-2.13/lib/Mail/Internet.pm
+===================================================================
+--- libmailtools-perl-2.13.orig/lib/Mail/Internet.pm
++++ libmailtools-perl-2.13/lib/Mail/Internet.pm
+@@ -535,7 +535,7 @@ sub cleaned_header_dup()
+     # seperated fields, only the first of which should be used to prevent
+     # accidental exposure of system-local information like phone numbers/
+     # room numbers.
+-    $name = (split /,/, $name)[0];
++    $name = (split /,/, $name)[0] if $name ne "";
+ 
+     if($name =~ /[^\w\s]/)
+     {   $name =~ s/"/\"/g;

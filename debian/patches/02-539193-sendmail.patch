@@ -5,8 +5,10 @@ From: Santiago Vila <sanvila@unex.es>
 The current code uses /usr/lib/sendmail and then /usr/sbin/sendmail as
 a fallback. Policy says it should use /usr/sbin/sendmail.
 
---- a/lib/Mail/Mailer.pm	2010-01-26 20:01:43.000000000 +1100
-+++ b/lib/Mail/Mailer.pm	2010-02-13 10:04:55.000000000 +1100
+Index: libmailtools-perl-2.13/lib/Mail/Mailer.pm
+===================================================================
+--- libmailtools-perl-2.13.orig/lib/Mail/Mailer.pm
++++ libmailtools-perl-2.13/lib/Mail/Mailer.pm
 @@ -22,7 +22,7 @@ sub is_exe($);
  sub Version { our $VERSION }
  
